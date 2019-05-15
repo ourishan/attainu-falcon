@@ -1,0 +1,19 @@
+* {
+    border: 1px solid;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 20px 10px;
+    border-radius: 10px;
+}
+#calc {
+    width: 350px;
+    margin: auto;
+    text-align: center;
+}
+#ops {
+    width: 100%;
+}
+.ops {
+    width: 50px;
+    display: inline-block;
+}

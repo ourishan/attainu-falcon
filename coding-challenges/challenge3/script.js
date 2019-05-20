@@ -11,8 +11,8 @@ function compare (arr1, arr2) {
               else
                 result = true;
           }
-      return result
+      return result;
   }
   
-  compare([1, [3,2]],[1, [3,2]]);
-  compare([1, [5,2]],[1, [3,2]]);
+  console.log(compare([1, [3,2]],[1, [3,2]]));
+  console.log(compare([1, [5,2]],[1, [3,2]]));

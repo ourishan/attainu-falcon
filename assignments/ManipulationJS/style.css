@@ -1,0 +1,12 @@
+table {
+    width: 100%;
+    text-align: left;
+    border-spacing: 0;
+}
+th,tr:nth-child(2n) {
+    background-color: aliceblue;
+}
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid gainsboro;
+}

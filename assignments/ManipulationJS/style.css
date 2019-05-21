@@ -4,9 +4,9 @@ table {
     border-spacing: 0;
 }
 th,tr:nth-child(2n) {
-    background-color: aliceblue;
+    background-color: gainsboro;
 }
 th, td {
-    padding: 10px;
-    border-bottom: 1px solid gainsboro;
+    padding: 15px;
+    border-bottom: 2px solid lightgrey;
 }

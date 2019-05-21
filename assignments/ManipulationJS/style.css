@@ -2,6 +2,7 @@ table {
     width: 100%;
     text-align: left;
     border-spacing: 0;
+    font-family: sans-serif;
 }
 th,tr:nth-child(2n) {
     background-color: gainsboro;

@@ -10,8 +10,6 @@ username.addEventListener('input', function (event) {
 });
 subt.addEventListener('submit', function (event) {
     event.preventDefault();
-    var c = new PasswordCredential(subt);
-    navigator.credentials.store(c);
     if(username.value.toLowerCase() == "ishan" && pswd.value == "12345678") {
         alert('Login Success!');
     } else {

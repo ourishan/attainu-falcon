@@ -10,9 +10,24 @@
 <body>
     <form>
         <label for="uname">Username</label>
-        <input type="text" placeholder="Enter Username" name="uname" required minlength="5" pattern="^[a-zA-Z_][a-zA-Z0-9_]*$">
+        <details tabindex="-1"><summary>Rules</summary>
+            <ul>
+                <li>Username cannot be blank.</li>
+                <li>Username cannot be less than 5 characters.</li>
+                <li>Username can only contain alphabets, digits and _.</li>
+                <li>Username cannot start with a digit.</li>
+                <li>Username is case-insensitive.</li>
+            </ul>
+        </details>
+        <input type="text" placeholder="Enter Username" name="uname" required minlength="5" pattern="^[a-zA-Z_][a-zA-Z0-9_]*$" autocomplete="username">
         <label for="psw">Password</label>
-        <input type="password" placeholder="Enter Password" name="psw" required minlength="8">
+        <details tabindex="-1"><summary>Rules</summary>
+            <ul>
+                <li>Password cannot be blank.</li>
+                <li>Password cannot be less than 8 characters.</li>
+            </ul>
+        </details>
+        <input type="password" placeholder="Enter Password" name="psw" required minlength="8" autocomplete="current-password">
         <button type="submit">Login</button>
     </form>
     <script src="script.js"></script>

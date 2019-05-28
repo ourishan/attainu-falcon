@@ -14,7 +14,7 @@ function search() {
     }
 
     function renderTable(books) {
-        console.log(books[0])
+        // console.log(books[0])
         let root = document.getElementsByTagName('tbody')[0]
         root.innerHTML = ''; 
         for (book in books) {

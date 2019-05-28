@@ -19,19 +19,18 @@ function search() {
         root.innerHTML = ''; 
         for (book in books) {
             // console.log(books[book])
-            let row = []
-            row[book] = root.insertRow()
+            let row = root.insertRow()
             for (const key in books[book]) {
                 // console.log(key)
                 if (key == 'title') {
-                    let cell = row[book].insertCell()
+                    let cell = row.insertCell()
                     cell.innerText = books[book][key]
                 }
             }
             for (const key in books[book]) {
                 // console.log(key)
                 if (key != 'imageLink' && key != 'title') {
-                    let cell = row[book].insertCell()
+                    let cell = row.insertCell()
                     cell.innerText = books[book][key]
                 }
             }

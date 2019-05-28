@@ -1,5 +1,6 @@
 function search() {
-    let lang = document.getElementsByTagName('input')[0].innerText;
+    let lang = document.getElementsByTagName('input')[0].value;
+    // let lang = 'english'
     fetch('https://raw.githubusercontent.com/attainu-falcon/attainu-falcon/master/coding-challenges/data/books.json').then(data => data.json()).then(data => searchBooks(data)).then(data => renderTable(data)).catch(err => console.log(err))
 
     function searchBooks(books) {

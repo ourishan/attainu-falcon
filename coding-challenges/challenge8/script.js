@@ -1,7 +1,14 @@
 function search() {
     let lang = document.getElementsByTagName('input')[0].value;
     // let lang = 'english'
-    fetch('https://raw.githubusercontent.com/attainu-falcon/attainu-falcon/master/coding-challenges/data/books.json').then(data => data.json()).then(data => searchBooks(data)).then(data => renderTable(data)).catch(err => console.log(err))
+    // fetch('books.json').then(data => data.json()).then(data => searchBooks(data)).then(data => renderTable(data)).catch(err => console.log(err))
+    $.ajax({
+        url: 'books.json',
+        dataType: 'JSON',
+        success: function (books) {
+            searchBooks(books)
+        }
+    })
 
     function searchBooks(books) {
         let selBooks = []
@@ -10,7 +17,8 @@ function search() {
             if (book.language.toLowerCase().indexOf(lang) != -1)
                 selBooks.push(book)
         }
-        return selBooks
+        renderTable(selBooks)
+        // return selBooks
     }
 
     function renderTable(books) {

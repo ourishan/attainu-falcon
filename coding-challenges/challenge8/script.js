@@ -1,5 +1,5 @@
 function search() {
-    let lang = document.getElementsByTagName('input')[0].value;
+    let lang = document.getElementsByTagName('input')[0].value.toLowerCase();
     // let lang = 'english'
     // fetch('books.json').then(data => data.json()).then(data => searchBooks(data)).then(data => renderTable(data)).catch(err => console.log(err))
     $.ajax({

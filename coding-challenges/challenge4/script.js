@@ -6116,4 +6116,4 @@ function citiesByState(s) {
     return c;
 }
 
-citiesByState("Assam");
+console.log(citiesByState("Assam"));

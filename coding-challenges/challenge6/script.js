@@ -2,13 +2,13 @@
 function checkCities(ch) {
     function check(data) {
       for (i = 0; i < data.length; i++) {
-        if (data[i].name[0].toLowerCase() == ch)
+        if (data[i].name[0].toLowerCase() == ch.toLowerCase())
           console.log(data[i].name);
       }
     }
-    fetch("https://raw.githubusercontent.com/attainu-falcon/attainu-falcon/master/coding-challenges/cities.json")
+    fetch("cities.json")
       .then((arr) => arr.json())
       .then(check)
-      .catch((err) => console.log(err));
+      .catch(err => err);
   }
-  checkCities('e');
+  console.log(checkCities('e'));

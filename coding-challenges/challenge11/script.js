@@ -9,10 +9,14 @@ function renderCards(data) {
     for(item of data) {
         let card = document.createElement('div')
         card.className = 'card'
+        let avatar = document.createElement('img')
+        avatar.className = 'card-img-top'
+        avatar.src = item.avatar_url
         let cardBody = document.createElement('div')
         cardBody.className = 'card-body'
         cardBody.textContent = item.login
 
+        card.appendChild(avatar)
         card.appendChild(cardBody)
         root.appendChild(card)
     }    

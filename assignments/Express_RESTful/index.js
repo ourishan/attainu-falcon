@@ -1,7 +1,7 @@
 var express = require('express')
 var app = express()
 
-app.use(express.urlencoded())
+app.use(express.json())
 
 app.post('/add', function (req, res) {
     let num1 = parseInt(req.body.num1)

@@ -8,4 +8,4 @@ function palin(str) {
     console.log("pallindrome!")
     return true
 }
-palin("kyyayyjk")
+palin("kayak")

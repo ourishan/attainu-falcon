@@ -5,6 +5,6 @@ function toHours(dur) {
     let sec = dur%60
     let min  = Math.floor(dur/60)%60
     let hrs  = Math.floor(dur/3600)   
-    return hrs+':'+min%60+':'+sec
+    return hrs+':'+min+':'+sec
 }
 console.log(toHours(3920))

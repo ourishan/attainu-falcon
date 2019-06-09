@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Timeline</title>
+</head>
+<body>
+    <header>
+        <form action="/" method="POST">
+            <input type="text" name="name" id="" placeholder="name" required>
+            <textarea name="tweet" id="" cols="30" rows="10" placeholder="tweet!" required></textarea>
+            <button type="submit">post</button>
+        </form>
+        <hr>
+    </header>
+    <main>
+        <!-- <h4>user</h4>
+        <p>express-session deprecated undefined resave option; provide resave option at assignments</p>
+        <hr> -->
+    </main>
+    <script>
+        fetch('/tweets').then(tweets => tweets.json()).then(tweets => render(tweets))
+        function render(tweets) {
+            console.log(tweets)
+            let tweetList = ''
+            for (const tweet of tweets) {
+                tweetList += '<h4>' + tweet.name + '</h4>' + '<p>' + tweet.tweet + '</p><hr>'
+            }
+        document.getElementsByTagName('main')[0].innerHTML = tweetList
+        }
+    </script>
+</body>
+</html>

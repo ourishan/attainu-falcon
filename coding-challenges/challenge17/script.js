@@ -1,8 +1,7 @@
 function fact(num, res = 1) {
-    res = res*num
-    num--
     while(num) {
-        return fact(num, res)
+        res = res*num
+        return fact(num-1, res)
     }
     return res
 }

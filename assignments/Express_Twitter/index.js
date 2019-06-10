@@ -12,7 +12,7 @@ let tweets = [
     }
 ]
 
-app.use('/', express.urlencoded());
+app.use('/', express.urlencoded({extended: false}));
 
 app.get('/', (req, res) => {
     let options = {
@@ -30,6 +30,6 @@ app.get('/tweets', (req, res) => {
     res.json(tweets);
 });
 
-app.listen(5500, () => {
-    console.log('listening on port 5500!');
+app.listen(80, () => {
+    console.log('listening on localhost!');
 });

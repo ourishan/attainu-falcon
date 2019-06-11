@@ -1,8 +1,7 @@
-function fact(num, res = 1) {
-    while(num) {
-        res = res*num
-        return fact(num-1, res)
+function fact(num) {
+    while (num) {
+        return num*fact(num - 1)
     }
-    return res
+    return 1
 }
 console.log(fact(4))

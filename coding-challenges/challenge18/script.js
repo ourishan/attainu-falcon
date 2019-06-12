@@ -10,4 +10,4 @@ function decToBin(dec) {
     bin = div*unit + bin
     return bin
 }
-console.log(decToBin(7))
+console.log(decToBin(777))

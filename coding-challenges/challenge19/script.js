@@ -1,8 +1,6 @@
 function fib(iteration) {
     while (iteration !== 2) {
-        let r = fib(iteration-1)
-        r.push(r[r.length-1]+r[r.length-2])
-        return r
+        return [...fib(iteration-1),fib(iteration-1)[fib(iteration-1).length-1]+fib(iteration-1)[fib(iteration-1).length-2]]
     }
     return [1,1]
 }

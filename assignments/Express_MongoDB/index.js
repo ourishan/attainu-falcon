@@ -5,17 +5,6 @@ const url = 'mongodb://localhost:27017'
 const dbName = 'mydb'
 const client = new MongoClient(url);
 
-let tweets = [
-    {
-        name: "digitizer",
-        tweet: "This is a cool piece of information."
-    },
-    {
-        name: "M0SH",
-        tweet: "@digitizer I agree."
-    }
-]
-
 app.use('/', express.urlencoded({extended: false}));
 
 app.get('/', (req, res) => {
@@ -35,7 +24,12 @@ app.post('/', (req, res) => {
 });
 
 app.get('/tweets', (req, res) => {
-    res.json(tweets);
+    client.connect(err => {    
+        const db = client.db(dbName);
+        db.collection('tweets').find({}).toArray((err, tweets) => {        
+            res.json(tweets);
+        })
+    })
 });
 
 app.listen(80, () => {

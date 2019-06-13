@@ -1,5 +1,9 @@
 const express = require('express');
 const app = express();
+const MongoClient = require('mongodb').MongoClient;
+const url = 'mongodb://localhost:27017'
+const dbName = 'mydb'
+const client = new MongoClient(url);
 
 let tweets = [
     {
@@ -22,8 +26,12 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
-    tweets.push({name: req.body.name, tweet: req.body.tweet})
-    res.redirect('/')
+    client.connect(err => {    
+        const db = client.db(dbName);
+        db.collection('tweets').insertOne(req.body, (err, result) => {        
+            res.redirect('/')
+        })
+    })
 });
 
 app.get('/tweets', (req, res) => {

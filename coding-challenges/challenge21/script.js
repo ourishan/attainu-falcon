@@ -1,10 +1,12 @@
 function inWords(digits) {
-    digits = digits.toString()
     wordsList = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
-    let words = ""
-    for (digit of digits) {
-        words += wordsList[digit] + " "
+    let n, q = digits, words = ""
+    while(q>9) {
+        n = q%10        
+        words = wordsList[n] + " " + words   
+        q = ~~(q/10)
     }
+    words = wordsList[q] + " " + words   
     return words
 }
-console.log(inWords(109))
+console.log(inWords(1))

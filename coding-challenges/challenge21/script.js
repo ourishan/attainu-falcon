@@ -3,7 +3,7 @@ function inWords(digits) {
     wordsList = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
     let words = ""
     for (let index = 0; index < literals.length; index++) {
-        const digit = parseInt(literals[index])
+        const digit = literals[index]
         words += wordsList[digit] + " "
     }
     return words

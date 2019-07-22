@@ -22,7 +22,7 @@
             inc: function(){ document.getElementById('count2').textContent = this.count++}
         }
         let counter2 = counter2Obj.inc.bind(counter2Obj)
-        let counter3 = (_ => {
+        let counter3 = ( _ => {
             let count = 1
             return _ => document.getElementById('count3').textContent = count++
         })()

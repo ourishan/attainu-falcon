@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="counter1()">Increment</button><h2>Counter: <span id="count1">0</span></h2>
+    <button onclick="counter2()">Increment</button><h2>Counter: <span id="count2">0</span></h2>
+    <button onclick="counter3()">Increment</button><h2>Counter: <span id="count3">0</span></h2>
+
+    <script>
+        let count = 1
+        let counter1 = _ => document.getElementById('count1').textContent = count++
+        let counter2Obj = {
+            count: 1,
+            inc: function(){ document.getElementById('count2').textContent = this.count++}
+        }
+        let counter2 = counter2Obj.inc.bind(counter2Obj)
+        let counter3 = (_ => {
+            let count = 1
+            return _ => document.getElementById('count3').textContent = count++
+        })()
+    </script>
+</body>
+</html>

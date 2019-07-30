@@ -23,7 +23,7 @@ var Timer = function (_React$Component) {
     value: function tick() {
       this.setState(function (state) {
         return {
-          seconds: state.seconds + 1
+          seconds: state.seconds + 0.1
         };
       });
     }
@@ -34,7 +34,7 @@ var Timer = function (_React$Component) {
 
       this.interval = setInterval(function () {
         return _this2.tick();
-      }, 1000);
+      }, 100);
     }
   }, {
     key: 'componentWillUnmount',
@@ -48,7 +48,7 @@ var Timer = function (_React$Component) {
         'div',
         null,
         'Seconds: ',
-        this.state.seconds
+        this.state.seconds.toFixed(1)
       );
     }
   }]);

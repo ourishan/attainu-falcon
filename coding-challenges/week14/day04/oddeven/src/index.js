@@ -24,32 +24,13 @@ class OddEven extends React.Component {
     }
 
     render() {
-        return ( <
-            form onSubmit = {
-                this.handleSubmit
-            } >
-            <
-            label >
-            Number:
-            <
-            input type = "text"
-            value = {
-                this.state.value
-            }
-            onChange = {
-                this.handleChange
-            }
-            /> <
-            /label> <
-            input type = "submit"
-            value = "Submit" / >
-            <
-            /form>
+        return (
+            <form onSubmit={this.handleSubmit} >
+                <label>Number: <input type="text" value={this.state.value} onChange={this.handleChange} /></label>
+                <input type="submit" value="Submit" />
+            </form>
         );
     }
 }
 
-ReactDOM.render( <
-    OddEven / > ,
-    document.getElementById('root')
-);
+ReactDOM.render(<OddEven />, document.getElementById('root'))

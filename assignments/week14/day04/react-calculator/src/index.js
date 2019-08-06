@@ -4,23 +4,20 @@ import ReactDOM from "react-dom"
 class Input extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            value: ''
-        }
         this.onChangeHandle = this.onChangeHandle.bind(this)
     }
 
     onChangeHandle(e) {
-        this.setState({ value: e.target.value })
+        this.props.pickValue(parseFloat(e.target.value))
     }
 
     render() {
-        return <input placeholder={this.props.placeholder} onChange={this.onChangeHandle}></input>
+        return <input placeholder={this.props.placeholder} onChange={this.onChangeHandle} value={this.props.output} />
     }
 }
 class Operation extends Component {
     render() {
-        return <button>{this.props.operator}</button>
+        return <button onClick={this.props.showResult}>{this.props.operator}</button>
     }
 }
 class Calculator extends Component {
@@ -30,11 +27,14 @@ class Calculator extends Component {
         this.state = {
             number1: "", number2: "", result: ""
         }
-        this.evaluate = this.evaluate.bind(this)
+        this.add = this.add.bind(this)
+        this.sub = this.sub.bind(this)
+        this.mul = this.mul.bind(this)
+        this.div = this.div.bind(this)
         this.setNumber1 = this.setNumber1.bind(this)
         this.setNumber2 = this.setNumber2.bind(this)
     }
-    
+
     setNumber1(value) {
         this.setState({
             number1: value
@@ -45,22 +45,37 @@ class Calculator extends Component {
             number2: value
         })
     }
-    evaluate(e) {
+    add() {
         this.setState((state, props) => ({
             result: state.number1 + state.number2
+        }))
+    }
+    sub() {
+        this.setState((state, props) => ({
+            result: state.number1 - state.number2
+        }))
+    }
+    mul() {
+        this.setState((state, props) => ({
+            result: state.number1 * state.number2
+        }))
+    }
+    div() {
+        this.setState((state, props) => ({
+            result: state.number1 / state.number2
         }))
     }
 
     render() {
         return (
             <>
-                <Input placeholder="Number 1" pickValue={this.setNumber1}/>
-                <Input placeholder="Number 2" pickValue={this.setNumber2}/>
-                <Operation operator="+" onClick={this.evaluate} />
-                <Operation operator="-" />
-                <Operation operator="*" />
-                <Operation operator="/" />
-                <Input placeholder="Result" />
+                <Input placeholder="Number 1" pickValue={this.setNumber1} />
+                <Input placeholder="Number 2" pickValue={this.setNumber2} />
+                <Operation operator="+" showResult={this.add} />
+                <Operation operator="-" showResult={this.sub} />
+                <Operation operator="*" showResult={this.mul} />
+                <Operation operator="/" showResult={this.div} />
+                <Input placeholder="Result" output={this.state.result} />
             </>
         )
     }

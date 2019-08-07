@@ -1,12 +1,14 @@
 import React from 'react'
 import './app.css'
+import Timer from './Timer'
+
 const url = 'https://raw.githubusercontent.com/attainu-falcon/falcon-course-module/master/assignments/data/quiz.json'
 const randomArray = [...Array(10).keys()].sort(_ => Math.random() - .5)
 export default class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            seconds: 60,
+            seconds: 59,
             topic: '',
             position: 0,
             score: 0
@@ -44,8 +46,7 @@ export default class App extends React.Component {
                 <h2>{this.state.topic.question}</h2>
                 <input placeholder="Answer" ref={this.input}></input>
                 <button onClick={this.check}>Submit</button>
-                <h1>{this.state.seconds}</h1>
-                <h4>seconds remaining</h4>
+                <Timer count={this.state.seconds}/>
             </>
         )
     }

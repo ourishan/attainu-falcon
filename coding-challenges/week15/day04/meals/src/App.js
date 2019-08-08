@@ -5,7 +5,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      meals: []
+      meals: null
     }
     this.getMeals = this.getMeals.bind(this)
     this.query = React.createRef()
@@ -14,11 +14,10 @@ class App extends React.Component {
   getMeals() {
     fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=" + this.query.current.value)
       .then(r => r.json())
-      // .then(r => console.log(r))
       .then(r => this.setState(r))
   }
   render() {
-    const meals = this.state.meals.map((meal, i) => <li>{meal.strMeal}</li>)
+    const meals = this.state.meals ? this.state.meals.map((meal, i) => <li key={i}>{meal.strMeal}</li>) : "Not found!"
     return (
       <>
         <h1>Meals</h1>

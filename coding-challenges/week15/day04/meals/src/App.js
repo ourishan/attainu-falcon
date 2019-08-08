@@ -11,7 +11,8 @@ class App extends React.Component {
     this.query = React.createRef()
   }
 
-  getMeals() {
+  getMeals(e) {
+    e.preventDefault()
     fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=" + this.query.current.value)
       .then(r => r.json())
       .then(r => this.setState(r))
@@ -21,8 +22,10 @@ class App extends React.Component {
     return (
       <>
         <h1>Meals</h1>
-        <input type="search" ref={this.query}></input>
-        <button onClick={this.getMeals}>Search</button>
+        <form onSubmit={this.getMeals}>
+          <input type="search" ref={this.query}></input>
+          <button>Search</button>
+        </form>
         <ul>{meals}</ul>
       </>
     )

@@ -1,27 +1,50 @@
 import React from 'react';
 import { Route, Link, Switch } from 'react-router-dom'
-
 import './App.css';
-async function getMails(category) {
-  return await fetch('https://raw.githubusercontent.com/attainu-falcon/falcon-course-module/master/assignments/data/mail.json').then(r => r.json()).then(i => i.filter(i => i.category === category).map(i => <tr><td>Sender</td><td>i.mail</td><td>dd-mm-yy</td></tr>))
-}
-(async _ => console.log(await getMails("Inbox")))()
-class App extends React.Component {
+
+class MailList extends React.Component {
   constructor(props) {
-    super((props))
-    this.state = {
-      mails: []
-    }
-    this.getMails = this.getMails.bind(this)
+    super(props)
+    this.state = { mails: [] }
   }
-  getMails(category) {
+  componentDidMount() {
     fetch('https://raw.githubusercontent.com/attainu-falcon/falcon-course-module/master/assignments/data/mail.json')
       .then(r => r.json())
-      .then(mails => this.setState({ mails: mails.filter(mail => mail.category === category) }))
+      .then(mails => this.setState({ mails: mails.filter(mail => mail.category === this.props.category).map(item => item.mail) }))
   }
-  // <tr><td>Sender</td><td>i.mail</td><td>dd-mm-yy</td></tr>
   render() {
-    let mail = this.state.mails.map(item=><tr><td>item.mail</td></tr>)
+    return (
+      <tbody>
+        {this.state.mails.map(mail => <tr><td>Sender</td><td>mail</td><td>dd-mm-yy</td></tr>)}
+      </tbody>
+    )
+  }
+}
+
+const routes = [
+  {
+    path: '/inbox',
+    component: <MailList category="Inbox" />,
+  },
+  {
+    path: '/sent',
+    component: <MailList category="Sent" />,
+  },
+  {
+    path: '/drafts',
+    component: <MailList category="Drafts" />,
+  },
+  {
+    path: '/trash',
+    component: <MailList category="Trash" />,
+  }
+]
+
+
+
+
+class App extends React.Component {
+  render() {
     return (
       <div className="App">
         <header>
@@ -45,11 +68,14 @@ class App extends React.Component {
                 <th>Date</th>
               </tr>
             </thead>
-            <tbody>
-              <Switch>
-                <Route path='/inbox' render={(this.state.mails) => <tr></tr>} />
-              </Switch>
-            </tbody>
+            <Switch>
+              {routes.map(({ path, component: Component }) => (
+                <Route
+                  path={path}
+                  render={(props) => <Component {...props} />}
+                />
+              ))}
+            </Switch>
           </table>
 
           <footer>

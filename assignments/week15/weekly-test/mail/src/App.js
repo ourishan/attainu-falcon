@@ -1,42 +1,28 @@
 import React from 'react';
 import { Route, Link, Switch } from 'react-router-dom'
 import './App.css';
-
-class MailList extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { mails: [] }
-  }
-  componentDidMount() {
-    fetch('https://raw.githubusercontent.com/attainu-falcon/falcon-course-module/master/assignments/data/mail.json')
-      .then(r => r.json())
-      .then(mails => this.setState({ mails: mails.filter(mail => mail.category === this.props.category).map(item => item.mail) }))
-  }
-  render() {
-    return (
-      <tbody>
-        {this.state.mails.map(mail => <tr><td>Sender</td><td>mail</td><td>dd-mm-yy</td></tr>)}
-      </tbody>
-    )
-  }
-}
+import MailList from './MailList'
 
 const routes = [
   {
     path: '/inbox',
-    component: <MailList category="Inbox" />,
+    component: MailList,
+    category: "Inbox"
   },
   {
     path: '/sent',
-    component: <MailList category="Sent" />,
+    component: MailList,
+    category: "Sent"
   },
   {
     path: '/drafts',
-    component: <MailList category="Drafts" />,
+    component: MailList,
+    category: "Drafts"
   },
   {
     path: '/trash',
-    component: <MailList category="Trash" />,
+    component: MailList,
+    category: "Trash"
   }
 ]
 
@@ -69,10 +55,10 @@ class App extends React.Component {
               </tr>
             </thead>
             <Switch>
-              {routes.map(({ path, component: Component }) => (
+              {routes.map(({ path, component: Component, category }) => (
                 <Route
                   path={path}
-                  render={(props) => <Component {...props} />}
+                  render={_ => <Component category={category} />}
                 />
               ))}
             </Switch>

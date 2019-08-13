@@ -24,7 +24,7 @@ class App extends React.Component {
     return (
       <>
         <input value={this.state.date} onFocus={this.onFocusHandle}></input>
-        {this.state.showCalendar ? <Calendar pickDate={this.onClickHandle} /> : ''}
+        <Calendar visibility={this.state.showCalendar} pickDate={this.onClickHandle} />
       </>
     );
   }

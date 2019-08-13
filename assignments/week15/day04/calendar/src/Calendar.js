@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class Calendar extends Component {
     render() {
         return (
-            <table class="table"  onClick={this.props.pickDate}>
+            <table class="table"  hidden={!this.props.visibility} onClick={this.props.pickDate}>
                 <thead>
                     <tr>
                         <th>Sun</th>

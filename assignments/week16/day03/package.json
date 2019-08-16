@@ -1,0 +1,15 @@
+{
+  "name": "redux-store",
+  "version": "1.0.0",
+  "description": "getting started redux",
+  "main": "reduxStore.js",
+  "dependencies": {
+    "redux": "^4.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ishan",
+  "license": "ISC"
+}

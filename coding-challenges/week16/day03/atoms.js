@@ -25,7 +25,7 @@ function atoms(molecule) {
             }
             element = ''
         } else if (isNaN(molecule[i + 1]) && molecule[i + 1] == molecule[i + 1].toUpperCase()) {
-            element += molecule[i]
+            element += molecule[i+1]
         } else if (isNaN(molecule[i + 1])) {
             if (molecule[i + 2] == undefined) {
                 element += molecule[i] + molecule[i + 1]
@@ -38,7 +38,7 @@ function atoms(molecule) {
                 element = ''
             } else if (!isNaN(molecule[i + 2])) {
                 count += molecule[i + 2]
-                element += molecule[i] + molecule[i + 1]
+                element += molecule[i]+molecule[i + 1]
             } else if (isNaN(molecule[i + 1]) && molecule[i + 1] == molecule[i + 1].toUpperCase()) {
                 count += molecule[i + 2]
                 element += molecule[i] + molecule[i + 1]

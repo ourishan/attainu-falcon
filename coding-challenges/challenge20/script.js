@@ -1,8 +1,9 @@
 function pangram(str) {
     let miss = ''
     for(let i = "a".charCodeAt();i <= "z".charCodeAt(); i++ ) {
-        if (str.toLowerCase().indexOf(String.fromCharCode(i)) == -1) {
-            miss += String.fromCharCode(i)
+        let char = String.fromCharCode(i)
+        if (str.toLowerCase().indexOf(char) == -1) {
+            miss += char
         }
     }
     return miss

@@ -2,6 +2,7 @@ import React from "react";
 import Tweet from "./Tweet";
 import TweetForm from "./TweetForm";
 import { connect } from 'react-redux'
+import { create } from '../actions/create'
 
 class TweetContainer extends React.Component {
   constructor(props) {
@@ -19,12 +20,13 @@ class TweetContainer extends React.Component {
 
   addTweet(name, tweet) {
     console.log(name + " " + tweet);
-    this.setState({
-      tweets: this.state.tweets.concat({
-        name: name,
-        tweet: tweet
-      })
-    });
+    this.props.create
+    // this.setState({
+    //   tweets: this.state.tweets.concat({
+    //     name: name,
+    //     tweet: tweet
+    //   })
+    // });
   }
 
   modifyTweet(tweet, index) {
@@ -77,4 +79,13 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(TweetContainer);
+function mapDispatchToProps(dispatch) {
+  console.log("mapDispatchToProps")
+  return {
+    create: function () {
+      dispatch(create())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TweetContainer);

@@ -6,6 +6,8 @@ import configureStore from "./store"
 
 import "./styles.css";
 
+console.log(configureStore().getState())
+
 function App() {
   return (
     <div className="App">

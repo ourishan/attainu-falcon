@@ -1,10 +1,7 @@
-export function create() {
+export function create(payload) {
   console.log("action: CREATE");
   return {
     type: "CREATE",
-    payload: {
-      tweet: "New Tweet!",
-      name: "user3"
-    }
+    payload: payload
   };
 }

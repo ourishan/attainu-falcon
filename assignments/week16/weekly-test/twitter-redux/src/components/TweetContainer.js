@@ -1,6 +1,7 @@
 import React from "react";
 import Tweet from "./Tweet";
 import TweetForm from "./TweetForm";
+import { connect } from 'react-redux'
 
 class TweetContainer extends React.Component {
   constructor(props) {
@@ -39,14 +40,14 @@ class TweetContainer extends React.Component {
   deleteTweet(index) {
     console.log("To delete tweet[" + index + "]");
     this.setState({
-      tweets: this.state.tweets.filter(function(item, i) {
+      tweets: this.state.tweets.filter(function (item, i) {
         return i !== index;
       })
     });
   }
 
   render() {
-    let listOfTweets = this.state.tweets.map((item, index) => (
+    let listOfTweets = this.props.tweets.map((item, index) => (
       <Tweet
         key={index}
         index={index}
@@ -61,12 +62,19 @@ class TweetContainer extends React.Component {
         {this.state.tweets.length === 0 ? (
           <p>No tweets to display</p>
         ) : (
-          <ul>{listOfTweets}</ul>
-        )}
+            <ul>{listOfTweets}</ul>
+          )}
         <TweetForm handleClick={this.addTweet} />
       </div>
     );
   }
 }
 
-export default TweetContainer;
+function mapStateToProps(state) {
+  console.log("mapStateToProps")
+  return {
+    tweets: state.tweets
+  }
+}
+
+export default connect(mapStateToProps)(TweetContainer);

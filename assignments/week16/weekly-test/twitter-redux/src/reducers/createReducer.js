@@ -1,24 +1,34 @@
 const defaultState = {
   tweets: [
     {
-      id:1,
+      index: 1,
       tweet: "tweet one!",
       name: "user1"
     },
     {
-      id:2,
+      index: 2,
       tweet: "tweet two!",
       name: "user2"
     }
   ]
 };
 
-function createReducer(state = defaultState, action) {
+function CRUDReducer(state = defaultState, action) {
   console.log("reducer");
   switch (action.type) {
     case "CREATE":
-      return  { ...state,
+      return {
+        ...state,
         tweets: [...state.tweets, action.payload]
+      };
+    case "UPDATE":
+      return {
+        ...state,
+        tweets: state.tweets.map(item => {
+          if (item.index === action.payload.index)
+            item.tweet = action.payload.text
+          return item
+        })
       };
 
     default:
@@ -26,4 +36,4 @@ function createReducer(state = defaultState, action) {
   }
 }
 
-export default createReducer;
+export default CRUDReducer;

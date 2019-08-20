@@ -53,12 +53,12 @@ class Tweet extends React.Component {
   }
 }
 
-function mapDispatchToProps(params) {
+function mapDispatchToProps(dispatch) {
   return {
-    update: function (dispatch) {
-      dispatch(update())
+    update: function (text, index) {
+      dispatch(update(text, index))
     },
-    delete: function (dispatch) {
+    delete: function () {
       dispatch(deleteTweet())
     }
   }

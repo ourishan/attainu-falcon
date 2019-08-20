@@ -1,8 +1,8 @@
-export function update(payload) {
-    console.log("action: CREATE");
+export function update(text, index) {
+    console.log("action: UPDATE");
     return {
-      type: "CREATE",
-      payload: payload
+      type: "UPDATE",
+      payload: {text, index}
     };
   }
   

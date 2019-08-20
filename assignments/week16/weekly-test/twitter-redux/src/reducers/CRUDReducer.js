@@ -1,12 +1,12 @@
 const defaultState = {
   tweets: [
     {
-      index: 1,
+      index: 0,
       tweet: "tweet one!",
       name: "user1"
     },
     {
-      index: 2,
+      index: 1,
       tweet: "tweet two!",
       name: "user2"
     }
@@ -19,7 +19,7 @@ function CRUDReducer(state = defaultState, action) {
     case "CREATE":
       return {
         ...state,
-        tweets: [...state.tweets, action.payload]
+        tweets: [...state.tweets, { index: state.tweets.length, ...action.payload }]
       };
     case "UPDATE":
       return {
@@ -29,6 +29,11 @@ function CRUDReducer(state = defaultState, action) {
             item.tweet = action.payload.text
           return item
         })
+      };
+    case "DELETE":
+      return {
+        ...state,
+        tweets: state.tweets.filter(item => item.index !== action.payload)
       };
 
     default:

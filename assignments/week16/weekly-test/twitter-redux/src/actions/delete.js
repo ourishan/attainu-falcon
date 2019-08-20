@@ -1,7 +1,7 @@
 export function deleteTweet(payload) {
     console.log("action: CREATE");
     return {
-      type: "CREATE",
+      type: "DELETE",
       payload: payload
     };
   }

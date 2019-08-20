@@ -39,7 +39,7 @@ class Tweet extends React.Component {
         {this.state.editable ? (
           <input value={this.state.text} onChange={this.handleChange} />
         ) : (
-            <span className="tweetlist-tweet">{this.props.data.tweet}</span>
+            <span className="tweetlist-tweet">{this.state.text}</span>
           )}
         <br />
         <span className="tweetlist-name">{this.props.data.name}</span>
@@ -53,13 +53,14 @@ class Tweet extends React.Component {
   }
 }
 
+
 function mapDispatchToProps(dispatch) {
   return {
     update: function (text, index) {
       dispatch(update(text, index))
     },
-    delete: function () {
-      dispatch(deleteTweet())
+    delete: function (index) {
+      dispatch(deleteTweet(index))
     }
   }
 }

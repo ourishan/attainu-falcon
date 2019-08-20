@@ -1,13 +1,21 @@
-function pattern(height) {
-    let line = ''
-    for (let floor = height - 1; floor >= 0; floor--) {
-        for (let i = 0; i < floor; i++) {
-            line += ' '
+// ----*.
+// ---*.*.
+// --*.*.*.
+// -*.*.*.*.
+// *.*.*.*.*.
+
+
+
+function pattern(n) {
+    var line = ''
+    for (var row = n; row >= 1; row--) {
+        for (var column = 1; column <= n; column++) {
+            if (column <= row - 1)
+                line = line + '-'
+            else
+                line = line + '*' + '.'
         }
-        for (let i = 0; i < 2 * (height - floor); i++) {
-            i % 2 ? line += ' ' : line += '*'
-        }
-        line += '\n'
+        line = line + '\n'
     }
     return line
 }

@@ -1,5 +1,8 @@
 import React from "react";
 import TweetActions from "./TweetActions";
+import { connect } from 'react-redux'
+import { update } from '../actions/update'
+import { deleteTweet } from '../actions/delete'
 
 class Tweet extends React.Component {
   constructor(props) {
@@ -15,14 +18,14 @@ class Tweet extends React.Component {
 
   handleDelete() {
     let flag = window.confirm("Are you sure?");
-    if (flag) this.props.handleDelete(this.props.index);
+    if (flag) this.props.delete(this.props.index);
   }
 
   handleEdit() {
     this.setState({ editable: !this.state.editable });
     // Update tweet list if tweet was modified by clicking on Save
     if (this.state.text !== this.props.data.tweet) {
-      this.props.handleEdit(this.state.text, this.props.index);
+      this.props.update(this.state.text, this.props.index);
     }
   }
 
@@ -36,8 +39,8 @@ class Tweet extends React.Component {
         {this.state.editable ? (
           <input value={this.state.text} onChange={this.handleChange} />
         ) : (
-          <span className="tweetlist-tweet">{this.props.data.tweet}</span>
-        )}
+            <span className="tweetlist-tweet">{this.props.data.tweet}</span>
+          )}
         <br />
         <span className="tweetlist-name">{this.props.data.name}</span>
         <TweetActions
@@ -50,4 +53,15 @@ class Tweet extends React.Component {
   }
 }
 
-export default Tweet;
+function mapDispatchToProps(params) {
+  return {
+    update: function (dispatch) {
+      dispatch(update())
+    },
+    delete: function (dispatch) {
+      dispatch(deleteTweet())
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Tweet);

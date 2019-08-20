@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux'
+import { create } from '../actions/create'
 
 class TweetForm extends React.Component {
   constructor(props) {
@@ -24,11 +25,7 @@ class TweetForm extends React.Component {
   handleClick(e) {
     e.preventDefault();
     if (this.state.tweet !== "" || this.state.name !== "") {
-      this.props.handleClick(this.state.name, this.state.tweet);
-      this.setState({
-        name: "",
-        tweet: ""
-      });
+      this.props.create({name: this.state.name, tweet: this.state.tweet})
     } else {
       alert("Blank tweet / name cannot be posted!");
     }
@@ -55,11 +52,12 @@ class TweetForm extends React.Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  
+  console.log("mapDispatchToProps")
+  return {
+    create: function (payload) {
+      dispatch(create(payload))
+    }
+  }
 }
 
-function mapStateToProps(state) {
-  
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(TweetForm);
+export default connect(null, mapDispatchToProps)(TweetForm);

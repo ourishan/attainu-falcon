@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from 'react-redux'
 
 class TweetForm extends React.Component {
   constructor(props) {
@@ -53,4 +54,12 @@ class TweetForm extends React.Component {
   }
 }
 
-export default TweetForm;
+function mapDispatchToProps(dispatch) {
+  
+}
+
+function mapStateToProps(state) {
+  
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TweetForm);

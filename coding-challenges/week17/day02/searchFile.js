@@ -24,4 +24,4 @@ async function searchFile(file, name) {
         return "Not found!"
 }
 
-searchFile('names.txt', 'Ansal')
+(async() => console.log(await searchFile('names.txt', 'Ansal')))()

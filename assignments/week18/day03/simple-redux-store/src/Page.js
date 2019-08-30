@@ -14,8 +14,8 @@ class Page extends PureComponent {
             <div>
                 <input type="number" ref={this.inVal} ></input>
                 <button onClick={_ => squareAction(this.inVal.current.value)}>square</button>
-                <button onClick={_=>cubeAction(this.inVal.current.value)}>cube</button>
-                <button onClick={_=>rootAction(this.inVal.current.value)}>root</button>
+                <button onClick={_ => cubeAction(this.inVal.current.value)}>cube</button>
+                <button onClick={_ => rootAction(this.inVal.current.value)}>root</button>
                 <h1>{value}</h1>
             </div>
         );
